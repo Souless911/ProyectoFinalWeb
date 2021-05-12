@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "b465d3ef-195a-4fdb-8919-0fe322ccb132",
+		"_postman_id": "67e25a34-66a1-4ff2-ae8c-c6b9dd5f7b40",
 		"name": "Proyecto",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Registrar Roberto Gutierrez",
+			"name": "Registrar primer jugador",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -18,7 +18,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"nombre\": \"Roberto\",\n    \"apellidos\": \"Gutierrez\",\n    \"sexo\": \"H\",\n    \"email\": \"roberto_gutierrez@gmail.com\",\n    \"fecha\": \"1999-10-22\",\n    \"password\": \"123RG\"\n}",
+					"raw": "{\n    \"nombre\": \"jug1\",\n    \"usuario\": \"barb\",\n    \"sexo\": \"H\",\n    \"email\": \"primer_usuario@gmail.com\",\n    \"fecha\": \"1999-10-22\",\n    \"password\": \"123RG\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -26,14 +26,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/users",
+					"raw": "localhost:3000/api/players",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"api",
-						"users"
+						"players"
 					]
 				}
 			},
@@ -52,7 +52,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"nombre\": \"Roberto\",\n    \"apellidos\": \"Gutierrez\",\n    \"sexo\": \"H\",\n    \"email\": \"roberto_gutierrez@gmail.com\",\n    \"fecha\": \"1999-10-22\",\n    \"password\": \"123RG\"\n}",
+					"raw": "{\n    \"nombre\": \"jug2\",\n    \"usuario\": \"brbr\",\n    \"sexo\": \"H\",\n    \"email\": \"segundoplayer@gmail.com\",\n    \"fecha\": \"1999-10-22\",\n    \"password\": \"123\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -60,14 +60,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/users",
+					"raw": "localhost:3000/api/players",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"api",
-						"users"
+						"players"
 					]
 				}
 			},
@@ -94,7 +94,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/admins/players/roberto_Lopez@gmail.com",
+					"raw": "localhost:3000/api/admins/players/primer_usuario@gmail.com",
 					"host": [
 						"localhost"
 					],
@@ -103,7 +103,7 @@
 						"api",
 						"admins",
 						"players",
-						"roberto_Lopez@gmail.com"
+						"primer_usuario@gmail.com"
 					]
 				}
 			},
