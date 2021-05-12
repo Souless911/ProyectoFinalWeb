@@ -10,7 +10,7 @@ const cors = require('cors');
 app.use(cors());
 
 // app.use(cors({
-//  origin: ['http://127.0.0.1:5500']
+//     origin: ['http://127.0.0.1:5500']
 // }));
 
 app.listen(port, () => {
@@ -22,7 +22,7 @@ app.use(express.json());
 app.get('/', (req, res) => res.send('Servidor proyecto'));
 
 
-// Post
+// Post registrar
 // /api/admins
 app.post('/api/admins', (req, res) => {
     let admin = req.body;
@@ -69,7 +69,7 @@ app.post('/api/admins', (req, res) => {
 
     dataHandler.createAdmin(admin);
     res.setHeader('Content-Type', 'application/json; charset=utf-8')
-    res.status(201).send(dataHandler.getAdminByEmail(admin.email))
+    res.status(200).send(dataHandler.getAdminByEmail(admin.email))
 });
 // /api/players
 app.post('/api/players', (req, res) => {
@@ -113,7 +113,7 @@ app.post('/api/players', (req, res) => {
         res.status(400).send("Solicitud Incorrecta. " + e);
     }
     if (dataHandler.getPlayerByEmail(player.email) != undefined) res.status(400).send("Solicitud Incorrecta. Email ya existente");
-    if (dataHandler.getPlayerByNombreUsuario(player.nombre, player.usuario) != undefined) res.status(400).send("Solicitud Incorrecta. Nombre y usuario ya existentes");
+    if (dataHandler.getPlayerByNombreUsuario(player.nombre, player.usuario) != undefined) res.status(400).send("Solicitud Incorrecta. Nombre y usuario ya existentes");//falta hacer que no se permita repetir el ususario
 
     player.datos = null;
     player.atributos = null;
@@ -134,17 +134,17 @@ app.post('/api/login', (req, res) => {
     let validP = true, validA = true;
 
     if (email == undefined || password == undefined) {
-        res.status(401).send('Solicitud Incorrecta. Email y/o password vacio(s)');
+        res.status(400).send('Solicitud Incorrecta. Email y/o password vacio(s)');
     } else {
         admin = dataHandler.getAdminByEmail(email);
         player = dataHandler.getPlayerByEmail(email);
 
         if (player == undefined || player.password != password) validP = false;
         if (admin == undefined || admin.password != password) validA = false;
-        if (validP == false && validA == false) res.status(401).send('Solicitud Incorrecta. Email y/o password invalido(s)');
+        if (validP == false && validA == false) res.status(400).send('Solicitud Incorrecta. Email y/o password invalido(s)');
         else {
             let token = dataHandler.generateToken(email, password, validA);
-            res.status(401).send(token);
+            res.status(400).send(token);
             if (token != null) res.status(200).json({
                 'token': token
             });
@@ -155,11 +155,11 @@ app.post('/api/login', (req, res) => {
 //Middleware de autenticación
 function authenticateA(req, res, next) {
     let token = req.get('token-auth');
-    if (token == undefined) res.status(401).send("Solicitud Incorrecta. No se provió token, asegurate de iniciar sesión primero (login)");
+    if (token == undefined) res.status(400).send("Solicitud Incorrecta. No se provió token, asegurate de iniciar sesión primero (login)");
     else {
         let uid = token.split('').slice(10, 19).join('');
         let admin = dataHandler.getAdminByUid(uid);
-        if (admin == undefined || admin.token != token) res.status(401).send("Solicitud Incorrecta. Token incorrecto, iniciar sesión como administrador (login)");
+        if (admin == undefined || admin.token != token) res.status(400).send("Solicitud Incorrecta. Token incorrecto, iniciar sesión como administrador (login)");
         else {
             req.id = uid;
             next();
@@ -168,11 +168,11 @@ function authenticateA(req, res, next) {
 }
 function authenticateP(req, res, next) {
     let token = req.get('token-auth');
-    if (token == undefined) res.status(401).send("Solicitud Incorrecta. No se provió token, asegurate de iniciar sesión primero (login)");
+    if (token == undefined) res.status(400).send("Solicitud Incorrecta. No se provió token, asegurate de iniciar sesión primero (login)");
     else {
         let uid = token.split('').slice(10, 19).join('');
         let player = dataHandler.getPlayerByUid(uid);
-        if (player == undefined || player.token != token) res.status(401).send("Solicitud Incorrecta. Token incorrecto, iniciar sesión como jugador (login)");
+        if (player == undefined || player.token != token) res.status(400).send("Solicitud Incorrecta. Token incorrecto, iniciar sesión como jugador (login)");
         else {
             req.id = uid;
             next();
@@ -180,7 +180,7 @@ function authenticateP(req, res, next) {
     }
 }
 
-// /api/soy /quiero la lista limitada de
+// /api/soy /quiero la lista limitada de información
 // get players by player
 app.get('/api/players/players', authenticateP, (req, res) => {
     let query = req.query;
@@ -261,15 +261,15 @@ app.get('/api/admins/admins', authenticateA, (req, res) => {
     res.send(JSON.stringify(admins));
   });
 ////
-// GET 
+// GET Informacion completa
 // /api/players/players/:email
 app.route('/api/players/players/:email').get(authenticateP, (req, res) => {
     let email = req.params.email
   
     if(dataHandler.getPlayerByEmail(email)==undefined)
-     res.status(404).send(`Solicitud Incorrecta. El email ${req.params.email} no pertenece a ningun Jugador registrado`);
+     res.status(400).send(`Solicitud Incorrecta. El email ${req.params.email} no pertenece a ningun Jugador registrado`);
     else if(dataHandler.getPlayerByEmail(email).uid != req.get('token-auth').split('').slice(10,19).join(''))
-      res.status(404).send("Solicitud Incorrecta. El token proveido no pertenece al registro del Jugador que intenta obtener");
+      res.status(400).send("Solicitud Incorrecta. El token proveido no pertenece al registro del Jugador que intenta obtener");
     else {
       res.setHeader('Content-Type', 'application/json; charset=utf-8')
       res.send(dataHandler.getPlayerByEmail(email));
@@ -280,7 +280,7 @@ app.route('/api/admins/players/:email').get(authenticateA, (req, res) => {
     let email = req.params.email
   
     if(dataHandler.getPlayerByEmail(email)==undefined)
-     res.status(404).send(`Solicitud Incorrecta. El email ${req.params.email} no pertenece a ningun Jugador registrado`);
+     res.status(400).send(`Solicitud Incorrecta. El email ${req.params.email} no pertenece a ningun Jugador registrado`);
      else {
       res.setHeader('Content-Type', 'application/json; charset=utf-8')
       res.send(dataHandler.getPlayerByEmail(email));
@@ -291,9 +291,9 @@ app.route('/api/admins/players/:email').get(authenticateA, (req, res) => {
 //     let email = req.params.email
   
 //     if(dataHandler.getAdminByEmail(email)==undefined)
-//      res.status(404).send(`Solicitud Incorrecta. El email ${req.params.email} no pertenece a ningun Administrador registrado`);
+//      res.status(400).send(`Solicitud Incorrecta. El email ${req.params.email} no pertenece a ningun Administrador registrado`);
 //     else if(dataHandler.getAdminByEmail(email).uid != req.get('token-auth').split('').slice(10,19).join(''))
-//       res.status(404).send("Solicitud Incorrecta. El token proveido no pertenece al registro del Administrador que intenta obtener");
+//       res.status(400).send("Solicitud Incorrecta. El token proveido no pertenece al registro del Administrador que intenta obtener");
 //     else {
 //       res.setHeader('Content-Type', 'application/json; charset=utf-8')
 //       res.send(dataHandler.getAdminByEmail(email));
@@ -304,9 +304,9 @@ app.route('/api/admins/admins/:email').get(authenticateA, (req, res) => {
     let email = req.params.email
   
     if(dataHandler.getAdminByEmail(email)==undefined)
-     res.status(404).send(`Solicitud Incorrecta. El email ${req.params.email} no pertenece a ningun Administrador registrado`);
+     res.status(400).send(`Solicitud Incorrecta. El email ${req.params.email} no pertenece a ningun Administrador registrado`);
     else if(dataHandler.getAdminByEmail(email).uid != req.get('token-auth').split('').slice(10,19).join(''))
-      res.status(404).send("Solicitud Incorrecta. El token proveido no pertenece al registro del Administrador que intenta obtener");
+      res.status(400).send("Solicitud Incorrecta. El token proveido no pertenece al registro del Administrador que intenta obtener");
     else {
       res.setHeader('Content-Type', 'application/json; charset=utf-8')
       res.status(200).send(dataHandler.getAdminByEmail(email));
@@ -320,9 +320,9 @@ app.route('/api/admins/admins/:email').get(authenticateA, (req, res) => {
 app.put('/api/players/players/:email', authenticateP, (req, res) => {
     let data = req.body;
     if(dataHandler.getPlayerByEmail(req.params.email)==undefined)
-      res.status(404).send(`Solicitud Incorrecta. El email ${req.params.email} no pertenece a ningun jugador registrado`);
+      res.status(400).send(`Solicitud Incorrecta. El email ${req.params.email} no pertenece a ningun jugador registrado`);
     else if(dataHandler.getPlayerByEmail(req.params.email).uid != req.get('token-auth').split('').slice(10,19).join(''))
-      res.status(404).send("Solicitud Incorrecta. El token proveido no pertenece al registro del jugador que intenta actualizar");
+      res.status(400).send("Solicitud Incorrecta. El token proveido no pertenece al registro del jugador que intenta actualizar");
     else {
         // ----------------------
       if((data.nombre == undefined&&data.usuario == undefined&&data.password == undefined&&data.fecha == undefined&&data.image == undefined&&data.biography == undefined&&data.journal == undefined) == true )
@@ -339,7 +339,7 @@ app.put('/api/admins/players/:email', authenticateA, (req, res) => {
     let data = req.body;
     
     if(dataHandler.getPlayerByEmail(req.params.email)==undefined)
-      res.status(404).send(`Solicitud Incorrecta. El email ${req.params.email} no pertenece a ningun jugador registrado`);
+      res.status(400).send(`Solicitud Incorrecta. El email ${req.params.email} no pertenece a ningun jugador registrado`);
     else {
         // ----------------------
       if((data.datos == undefined&&data.atributos == undefined&&data.inventario == undefined&&data.spellbook == undefined&&data.journal == undefined) == true )
@@ -356,9 +356,9 @@ app.put('/api/admins/admins/:email', authenticateA, (req, res) => {
     let data = req.body;
   
     if(dataHandler.getAdminByEmail(req.params.email)==undefined)
-      res.status(404).send(`Solicitud Incorrecta. El email ${req.params.email} no pertenece a ningun usuario registrado`);
+      res.status(400).send(`Solicitud Incorrecta. El email ${req.params.email} no pertenece a ningun usuario registrado`);
     else if(dataHandler.getAdminByEmail(req.params.email).uid != req.get('token-auth').split('').slice(10,19).join(''))
-      res.status(404).send("Solicitud Incorrecta. El token proveido no pertenece al registro del administrador que intenta actualizar");
+      res.status(400).send("Solicitud Incorrecta. El token proveido no pertenece al registro del administrador que intenta actualizar");
     else {
       if((data.nombre == undefined&&data.usuario == undefined&&data.password == undefined&&data.fecha == undefined&&data.image == undefined) == true )
         res.status(400).send("Solicitud Incorrecta. No se provió ningún atributo válido para actualizar");
@@ -377,9 +377,9 @@ app.put('/api/admins/admins/:email', authenticateA, (req, res) => {
 app.delete('/api/admins/:email', authenticateA, (req, res) => {
 
     if(dataHandler.getAdminByEmail(req.params.email)==undefined)
-      res.status(404).send(`Solicitud Incorrecta. El email ${req.params.email} no pertenece a ningun administrador registrado`);
+      res.status(400).send(`Solicitud Incorrecta. El email ${req.params.email} no pertenece a ningun administrador registrado`);
     else if(dataHandler.getAdminByEmail(req.params.email).uid != req.get('token-auth').split('').slice(10,19).join(''))
-      res.status(404).send("Solicitud Incorrecta. El token proveido no pertenece al registro del administrador que intenta eliminar");
+      res.status(400).send("Solicitud Incorrecta. El token proveido no pertenece al registro del administrador que intenta eliminar");
     else{
       let adminj = dataHandler.getAdminByEmail(req.params.email);
       dataHandler.deleteAdmin(req.params.email);
@@ -391,7 +391,7 @@ app.delete('/api/admins/:email', authenticateA, (req, res) => {
   app.delete('/api/adimns/players/:email', authenticateA, (req, res) => {
     
     if(dataHandler.getPlayerByEmail(req.params.email)==undefined)
-      res.status(404).send(`Solicitud Incorrecta. El email ${req.params.email} no pertenece a ningun jugador registrado`);
+      res.status(400).send(`Solicitud Incorrecta. El email ${req.params.email} no pertenece a ningun jugador registrado`);
     else{
       let playerj = dataHandler.getPlayerByEmail(req.params.email);
       dataHandler.deletePlayer(req.params.email);
@@ -403,9 +403,9 @@ app.delete('/api/admins/:email', authenticateA, (req, res) => {
 app.delete('/api/players/:email', authenticateP, (req, res) => {
     
     if(dataHandler.getPlayerByEmail(req.params.email)==undefined)
-      res.status(404).send(`Solicitud Incorrecta. El email ${req.params.email} no pertenece a ningun jugador registrado`);
+      res.status(400).send(`Solicitud Incorrecta. El email ${req.params.email} no pertenece a ningun jugador registrado`);
     else if(dataHandler.getPlayerByEmail(req.params.email).uid != req.get('token-auth').split('').slice(10,19).join(''))
-      res.status(404).send("Solicitud Incorrecta. El token proveido no pertenece al registro del jugador que intenta eliminar");
+      res.status(400).send("Solicitud Incorrecta. El token proveido no pertenece al registro del jugador que intenta eliminar");
     else{
       let playerj = dataHandler.getPlayerByEmail(req.params.email);
       dataHandler.deletePlayer(req.params.email);
