@@ -10,7 +10,7 @@ const HTTTPMethods = {
 const urlpage = ''
 let modalLogin = document.getElementById("loginid");
 let btnLogin = document.getElementById("btnLogin");
-let testto;
+let galleta = "";
 
 btnLogin.onclick = function (event) {
     let d = {};
@@ -22,6 +22,9 @@ btnLogin.onclick = function (event) {
 
 function log(f) {
     sendHTTPRequest('/api/login', f, HTTTPMethods.post, (res) => {
+    
+        document.cookie = "token: res.token "+ res.send;
+    
         window.location.replace("atributos.html");
     }, (err, res) => {
         console.log(err, res);
@@ -46,8 +49,21 @@ function sendHTTPRequest(urlAPI, data, method, cbOK, cbError) {
             alert(xhr.status + ': ' + xhr.responseText); // e.g. 404: Not Found
             cbError(xhr.status + ': ' + xhr.responseText);
         } else {
-            console.log(xhr.responseText); // Significa que fue exitoso
+           // console.log(xhr.responseText); // Significa que fue exitoso
+           document.cookie = xhr.responseText;
+            var x = document.cookie;
+            galleta = xhr.responseText;
+            console.log(x);
             cbOK({status: xhr.status, data: xhr.responseText});
         }
-    };te 
+    };
+}
+function nombre(galleta){
+    let correo = galleta.email;
+    let ficha = galleta.token;
+    sendHTTPRequest('/api/players/players/'+correo, ficha, HTTTPMethods.get, (res) => {
+        console.log("cookie funciona");
+    }, (err, res) => {
+        console.log("cookie no funciona");
+    });
 }

@@ -135,13 +135,11 @@ app.post('/api/login', (req, res) => {
   let password = req.body.password
   let player, admin;
   let validP = true, validA = true;
-  console.log(email, password);
   if (email == undefined || password == undefined) {
     res.status(400).send('Solicitud Incorrecta. Email y/o password vacio(s)');
   } else {
     admin = dataHandler.getAdminByEmail(email);
     player = dataHandler.getPlayerByEmail(email);
-    console.log(player);
     if (player == undefined || player.password != password) validP = false;
     if (admin == undefined || admin.password != password) validA = false;
     if (validP == false && validA == false) res.status(400).send('Solicitud Incorrecta. Email y/o password invalido(s)');
@@ -149,6 +147,7 @@ app.post('/api/login', (req, res) => {
     else {
       let token = dataHandler.generateToken(email, password, validA);
       if (token != null) res.status(200).json({
+        'email' : email,
         'token': token
       });
     }
