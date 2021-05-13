@@ -1,21 +1,26 @@
 {
 	"info": {
-		"_postman_id": "b465d3ef-195a-4fdb-8919-0fe322ccb132",
+		"_postman_id": "5504e6e4-322f-467b-8767-1f80c3c48bb0",
 		"name": "Proyecto",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
+<<<<<<< HEAD
 			"name": "Registrar Admin Gutierrez",
+=======
+			"name": "Get player by own email + token",
+>>>>>>> 066533ecf766ce4dd2b243f228eb663ade444588
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [
 					{
-						"key": "content-type",
-						"value": "application/json",
+						"key": "token-auth",
+						"value": "bsO6B6TcP-7F1cpMGDU",
 						"type": "text"
 					}
 				],
+<<<<<<< HEAD
 				"body": {
 					"mode": "raw",
 					"raw": "{\n    \"nombre\": \"Admin\",\n    \"usuario\": \"Gutierrez\",\n    \"sexo\": \"H\",\n    \"email\": \"Admin_gutierrez@gmail.com\",\n    \"fecha\": \"1999-10-22\",\n    \"password\": \"123RG\"\n}",
@@ -27,20 +32,37 @@
 				},
 				"url": {
 					"raw": "localhost:3000/api/admins",
+=======
+				"url": {
+					"raw": "localhost:3000/api/players/players/primer_usuario@gmail.com",
+>>>>>>> 066533ecf766ce4dd2b243f228eb663ade444588
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"api",
+<<<<<<< HEAD
 						"admins"
+=======
+						"players",
+						"players",
+						"primer_usuario@gmail.com"
+					],
+					"query": [
+						{
+							"key": "token-auth",
+							"value": "bsO6B6TcP-7F1cpMGDU",
+							"disabled": true
+						}
+>>>>>>> 066533ecf766ce4dd2b243f228eb663ade444588
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Registrar Roberto lopez player",
+			"name": "LOGIN Player",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -52,6 +74,7 @@
 				],
 				"body": {
 					"mode": "raw",
+<<<<<<< HEAD
 					"raw": "{\n    \"nombre\": \"Roberto\",\n    \"usuario\": \"Lopez\",\n    \"sexo\": \"H\",\n    \"email\": \"roberto_Lopez@gmail.com\",\n    \"fecha\": \"1999-10-22\",\n    \"password\": \"123RL\"\n}",
 					"options": {
 						"raw": {
@@ -61,19 +84,30 @@
 				},
 				"url": {
 					"raw": "localhost:3000/api/players",
+=======
+					"raw": "{\n    \"email\": \"tercer_player@gmail.com\",\n    \"password\": \"1234\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/api/login",
+>>>>>>> 066533ecf766ce4dd2b243f228eb663ade444588
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"api",
+<<<<<<< HEAD
 						"players"
+=======
+						"login"
+>>>>>>> 066533ecf766ce4dd2b243f228eb663ade444588
 					]
 				}
 			},
 			"response": []
 		},
 		{
+<<<<<<< HEAD
 			"name": "login Admin Gutierrez",
 			"request": {
 				"method": "POST",
@@ -133,11 +167,15 @@
 		},
 		{
 			"name": "PUT to player by the same player",
+=======
+			"name": "DELETE user with own email",
+>>>>>>> 066533ecf766ce4dd2b243f228eb663ade444588
 			"request": {
-				"method": "PUT",
+				"method": "DELETE",
 				"header": [
 					{
 						"key": "token-auth",
+<<<<<<< HEAD
 						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvYmVydG9fTG9wZXpAZ21haWwuY29tIiwiaWF0IjoxNjIwODk1NzI5fQ.7ff4m-inXp291CTOU0pzUfQG19UKOFzf6XSrnVPiWpw",
 						"type": "text"
 					}
@@ -187,16 +225,22 @@
 						}
 					}
 				},
+=======
+						"value": "TpXrve_QB-lisQYi__-",
+						"type": "text"
+					}
+				],
+>>>>>>> 066533ecf766ce4dd2b243f228eb663ade444588
 				"url": {
-					"raw": "localhost:3000/api/admins/players/roberto_Lopez@gmail.com",
+					"raw": "localhost:3000/api/players/players/tercer_player@gmail.com",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"api",
-						"admins",
 						"players",
+<<<<<<< HEAD
 						"roberto_Lopez@gmail.com"
 					]
 				}
@@ -234,12 +278,17 @@
 						"admins",
 						"admins",
 						"Admin_gutierrez@gmail.com"
+=======
+						"players",
+						"tercer_player@gmail.com"
+>>>>>>> 066533ecf766ce4dd2b243f228eb663ade444588
 					]
 				}
 			},
 			"response": []
 		},
 		{
+<<<<<<< HEAD
 			"name": "get player by the same player",
 			"request": {
 				"method": "GET",
@@ -358,6 +407,9 @@
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
+=======
+			"name": "POST NUEVO PLAYER",
+>>>>>>> 066533ecf766ce4dd2b243f228eb663ade444588
 			"request": {
 				"method": "GET",
 				"header": [
@@ -369,17 +421,32 @@
 				],
 				"body": {
 					"mode": "raw",
+<<<<<<< HEAD
 					"raw": ""
 				},
 				"url": {
 					"raw": "localhost:3000/api/admins/players",
+=======
+					"raw": "{\n    \"nombre\": \"jug3\",\n    \"usuario\": \"breebr\",\n    \"sexo\": \"H\",\n    \"email\": \"tercer_player@gmail.com\",\n    \"fecha\": \"1999-10-22\",\n    \"password\": \"1234\",\n    \"datos\": null,\n    \"atributos\": null,\n    \"inventario\": null,\n    \"spellbook\": null,\n    \"biography\": null,\n    \"journal\": null,\n    \"image\": \"https://randomuser.me/api/portraits/men/75.jpg\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/players",
+>>>>>>> 066533ecf766ce4dd2b243f228eb663ade444588
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"api",
+<<<<<<< HEAD
 						"admins",
+=======
+>>>>>>> 066533ecf766ce4dd2b243f228eb663ade444588
 						"players"
 					]
 				}
@@ -387,10 +454,14 @@
 			"response": []
 		},
 		{
+<<<<<<< HEAD
 			"name": "get admins by admin",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
+=======
+			"name": "Registrar Roberto lopez player",
+>>>>>>> 066533ecf766ce4dd2b243f228eb663ade444588
 			"request": {
 				"method": "GET",
 				"header": [
@@ -402,6 +473,7 @@
 				],
 				"body": {
 					"mode": "raw",
+<<<<<<< HEAD
 					"raw": ""
 				},
 				"url": {
@@ -428,30 +500,50 @@
 						"key": "token-auth",
 						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvYmVydG9fTG9wZXpAZ21haWwuY29tIiwiaWF0IjoxNjIwODk1NzI5fQ.7ff4m-inXp291CTOU0pzUfQG19UKOFzf6XSrnVPiWpw",
 						"type": "text"
+=======
+					"raw": "{\n    \"nombre\": \"Roberto\",\n    \"apellidos\": \"Gutierrez\",\n    \"sexo\": \"H\",\n    \"email\": \"roberto_gutierrez@gmail.com\",\n    \"fecha\": \"1999-10-22\",\n    \"password\": \"123RG\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+>>>>>>> 066533ecf766ce4dd2b243f228eb663ade444588
 					}
-				],
+				},
 				"url": {
+<<<<<<< HEAD
 					"raw": "localhost:3000/api/players/roberto_Lopez@gmail.com",
+=======
+					"raw": "localhost:3000/api/users",
+>>>>>>> 066533ecf766ce4dd2b243f228eb663ade444588
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"api",
+<<<<<<< HEAD
 						"players",
 						"roberto_Lopez@gmail.com"
+=======
+						"users"
+>>>>>>> 066533ecf766ce4dd2b243f228eb663ade444588
 					]
 				}
 			},
 			"response": []
 		},
 		{
+<<<<<<< HEAD
 			"name": "Eliminar al player Roberto Lopez by admin",
+=======
+			"name": "PUT ADMIN GUTIERREZ",
+>>>>>>> 066533ecf766ce4dd2b243f228eb663ade444588
 			"request": {
-				"method": "DELETE",
+				"method": "PUT",
 				"header": [
 					{
 						"key": "token-auth",
+<<<<<<< HEAD
 						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvYmVydG9fTG9wZXpAZ21haWwuY29tIiwiaWF0IjoxNjIwODk1NzI5fQ.7ff4m-inXp291CTOU0pzUfQG19UKOFzf6XSrnVPiWpw",
 						"type": "text"
 					}
@@ -481,10 +573,27 @@
 						"key": "token-auth",
 						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFkbWluX2d1dGllcnJlekBnbWFpbC5jb20iLCJpYXQiOjE2MjA4OTU1NzR9.W6PCDYGkeDyspyV9WrwjGTWbQHctKEv9ffuM4wWkNoU",
 						"type": "text"
+=======
+						"value": "4-xt-dkFO-poZnqwHTT",
+						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"atributos\": {\n        \"si\":\"no\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+>>>>>>> 066533ecf766ce4dd2b243f228eb663ade444588
+					}
+				},
 				"url": {
+<<<<<<< HEAD
 					"raw": "localhost:3000/api/admins/Admin_gutierrez@gmail.com",
+=======
+					"raw": "localhost:3000/api/admins/players/roberto_Lopez@gmail.com",
+>>>>>>> 066533ecf766ce4dd2b243f228eb663ade444588
 					"host": [
 						"localhost"
 					],
@@ -492,7 +601,12 @@
 					"path": [
 						"api",
 						"admins",
+<<<<<<< HEAD
 						"Admin_gutierrez@gmail.com"
+=======
+						"players",
+						"roberto_Lopez@gmail.com"
+>>>>>>> 066533ecf766ce4dd2b243f228eb663ade444588
 					]
 				}
 			},
