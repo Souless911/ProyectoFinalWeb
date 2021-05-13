@@ -14,7 +14,7 @@ app.use(cors());
 // }));
 
 
-app.use(express.static(__dirname + '/Front-End', { index: 'Atributos.html' }));
+app.use(express.static(__dirname + '/Front-End', { index: 'Home.html' }));
 app.use(express.json());
 app.use(express.urlencoded({
   extended: true
@@ -140,13 +140,14 @@ app.post('/api/login', (req, res) => {
   } else {
     admin = dataHandler.getAdminByEmail(email);
     player = dataHandler.getPlayerByEmail(email);
-
+    console.log(player);
     if (player == undefined || player.password != password) validP = false;
     if (admin == undefined || admin.password != password) validA = false;
     if (validP == false && validA == false) res.status(400).send('Solicitud Incorrecta. Email y/o password invalido(s)');
+
     else {
       let token = dataHandler.generateToken(email, password, validA);
-      res.status(400).send(token);
+      res.status(200).send(token);
       if (token != null) res.status(200).json({
         'token': token
       });

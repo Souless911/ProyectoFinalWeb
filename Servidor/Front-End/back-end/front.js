@@ -10,14 +10,7 @@ const HTTTPMethods = {
 const urlpage = ''
 let modalLogin = document.getElementById("loginid");
 let btnLogin = document.getElementById("btnLogin");
-modalLogin.addEventListener("change", function (e) {
-    let invalids = document.querySelectorAll("#loginId input:invalid");
-    let valids = document.querySelectorAll("#loginId input:valid");
-    for (let e of invalids) e.classList.add("border", "border-danger");
-    for (let e of valids) e.classList.remove("border", "border-danger");
-    if (invalids.length == 0) btnLogin.removeAttribute('disabled');
-    else btnLogin.setAttribute('disabled', null);
-});
+
 
 btnLogin.onclick = function (event) {
     let d = {};
@@ -54,10 +47,7 @@ function sendHTTPRequest(urlAPI, data, method, cbOK, cbError) {
             cbError(xhr.status + ': ' + xhr.responseText);
         } else {
             // console.log(xhr.responseText); // Significa que fue exitoso
-            cbOK({
-                status: xhr.status,
-                data: xhr.responseText
-            });
+            window.location.replace("atributos.html");
         }
     };
 }
