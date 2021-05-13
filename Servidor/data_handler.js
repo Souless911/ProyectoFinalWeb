@@ -66,17 +66,17 @@ function createPlayer(player) {
     players = JSON.parse(content);
 }
 
-function generateToken(email, password, a) {
+function updateToken(email, token, a) {
     if (a) {
         let admin = getAdminByEmail(email);
-        if (admin.token == undefined) admin.token = shortid.generate() + '-' + admin.uid;
+        admin.token = token;
         fs.writeFileSync('admins.json', JSON.stringify(admins));
         contenta = fs.readFileSync('admins.json');
         admins = JSON.parse(contenta);
         return admin.token;
     } else {
         let player = getPlayerByEmail(email);
-        if (player.token == undefined) player.token = shortid.generate() + '-' + player.uid;
+        player.token = token;
         fs.writeFileSync('players.json', JSON.stringify(players));
         content = fs.readFileSync('players.json');
         players = JSON.parse(content);
@@ -199,7 +199,7 @@ exports.getPlayerByEmail = getPlayerByEmail;
 exports.getPlayerByNombreUsuario = getPlayerByNombreUsuario;
 exports.getPlayerByUid = getPlayerByUid;
 exports.createPlayer = createPlayer;
-exports.generateToken = generateToken;
+exports.updateToken = updateToken;
 exports.getAdmins = getAdmins;
 exports.getPlayers = getPlayers;
 exports.updatePlayerP = updatePlayerP;
