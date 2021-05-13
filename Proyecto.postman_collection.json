@@ -1,12 +1,46 @@
 {
 	"info": {
-		"_postman_id": "67e25a34-66a1-4ff2-ae8c-c6b9dd5f7b40",
+		"_postman_id": "5504e6e4-322f-467b-8767-1f80c3c48bb0",
 		"name": "Proyecto",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Registrar primer jugador",
+			"name": "Get player by own email + token",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token-auth",
+						"value": "bsO6B6TcP-7F1cpMGDU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/players/players/primer_usuario@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"players",
+						"players",
+						"primer_usuario@gmail.com"
+					],
+					"query": [
+						{
+							"key": "token-auth",
+							"value": "bsO6B6TcP-7F1cpMGDU",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN Player",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -18,7 +52,63 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"nombre\": \"jug1\",\n    \"usuario\": \"barb\",\n    \"sexo\": \"H\",\n    \"email\": \"primer_usuario@gmail.com\",\n    \"fecha\": \"1999-10-22\",\n    \"password\": \"123RG\"\n}",
+					"raw": "{\n    \"email\": \"tercer_player@gmail.com\",\n    \"password\": \"1234\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/api/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE user with own email",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token-auth",
+						"value": "TpXrve_QB-lisQYi__-",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/players/players/tercer_player@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"players",
+						"players",
+						"tercer_player@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST NUEVO PLAYER",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"jug3\",\n    \"usuario\": \"breebr\",\n    \"sexo\": \"H\",\n    \"email\": \"tercer_player@gmail.com\",\n    \"fecha\": \"1999-10-22\",\n    \"password\": \"1234\",\n    \"datos\": null,\n    \"atributos\": null,\n    \"inventario\": null,\n    \"spellbook\": null,\n    \"biography\": null,\n    \"journal\": null,\n    \"image\": \"https://randomuser.me/api/portraits/men/75.jpg\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -52,7 +142,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"nombre\": \"jug2\",\n    \"usuario\": \"brbr\",\n    \"sexo\": \"H\",\n    \"email\": \"segundoplayer@gmail.com\",\n    \"fecha\": \"1999-10-22\",\n    \"password\": \"123\"\n}",
+					"raw": "{\n    \"nombre\": \"Roberto\",\n    \"apellidos\": \"Gutierrez\",\n    \"sexo\": \"H\",\n    \"email\": \"roberto_gutierrez@gmail.com\",\n    \"fecha\": \"1999-10-22\",\n    \"password\": \"123RG\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -60,14 +150,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/players",
+					"raw": "localhost:3000/api/users",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"api",
-						"players"
+						"users"
 					]
 				}
 			},
@@ -94,7 +184,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/admins/players/primer_usuario@gmail.com",
+					"raw": "localhost:3000/api/admins/players/roberto_Lopez@gmail.com",
 					"host": [
 						"localhost"
 					],
@@ -103,180 +193,7 @@
 						"api",
 						"admins",
 						"players",
-						"primer_usuario@gmail.com"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get Roberto Lopez",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "x-auth",
-						"value": "WgAuRUdKt-lWAhABU_V",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "localhost:3000/api/users/johnson@gmail.com",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"users",
-						"johnson@gmail.com"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get usuarios",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": ""
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "login Roberto Gutierrez",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "content-type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"email\": \"roberto_gutierrez@gmail.com\",\n    \"password\": \"123RG\"\n}"
-				},
-				"url": {
-					"raw": "localhost:3000/api/login",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "login Roberto Lopez",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "content-type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"email\": \"roberto_Lopez@gmail.com\",\n    \"password\": \"123RL\"\n}"
-				},
-				"url": {
-					"raw": "localhost:3000/api/login",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Eliminar al usuario roberto Lopez fail",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "x-auth",
-						"value": "WgAuRUdKt-lWAhABU_V",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "localhost:3000/api/users/johnson@gmail.com",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"users",
-						"johnson@gmail.com"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Eliminar al usuario Roberto Lopez",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "x-auth",
-						"value": "WgAuRUdKt-lWAhABU_V",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "localhost:3000/api/users/johnson@gmail.com",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"users",
-						"johnson@gmail.com"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Eliminar al usuario Roberto Gutierrez",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "x-auth",
-						"value": "WgAuRUdKt-lWAhABU_V",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "localhost:3000/api/users/johnson@gmail.com",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"users",
-						"johnson@gmail.com"
+						"roberto_Lopez@gmail.com"
 					]
 				}
 			},
