@@ -72,6 +72,7 @@ app.post('/api/admins', (req, res) => {
   res.setHeader('Content-Type', 'application/json; charset=utf-8')
   res.status(200).send(dataHandler.getAdminByEmail(admin.email))
 });
+
 // /api/players
 app.post('/api/players', (req, res) => {
   let player = req.body;
@@ -147,7 +148,6 @@ app.post('/api/login', (req, res) => {
 
     else {
       let token = dataHandler.generateToken(email, password, validA);
-      res.status(200).send(token);
       if (token != null) res.status(200).json({
         'token': token
       });
@@ -184,6 +184,7 @@ function authenticateP(req, res, next) {
 }
 
 // /api/soy /quiero la lista limitada de información
+
 // get players by player
 app.get('/api/players/players', authenticateP, (req, res) => {
   let query = req.query;
@@ -264,6 +265,7 @@ app.get('/api/admins/admins', authenticateA, (req, res) => {
   res.send(JSON.stringify(admins));
 });
 ////
+
 // GET Informacion completa
 // /api/players/players/:email
 app.route('/api/players/players/:email').get(authenticateP, (req, res) => {
