@@ -1,0 +1,565 @@
+{
+	"info": {
+		"_postman_id": "b465d3ef-195a-4fdb-8919-0fe322ccb132",
+		"name": "Proyecto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Registrar Admin Gutierrez",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Admin\",\n    \"usuario\": \"Gutierrez\",\n    \"sexo\": \"H\",\n    \"email\": \"Admin_gutierrez@gmail.com\",\n    \"fecha\": \"1999-10-22\",\n    \"password\": \"123RG\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/admins",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registrar mauricio player",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Mauricio\",\n    \"usuario\": \"mauricio\",\n    \"sexo\": \"H\",\n    \"email\": \"Mauricio@gmail.com\",\n    \"fecha\": \"1999-10-22\",\n    \"password\": \"123M\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/players",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"players"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registrar Roberto lopez player",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Roberto\",\n    \"usuario\": \"Lopez\",\n    \"sexo\": \"H\",\n    \"email\": \"roberto_Lopez@gmail.com\",\n    \"fecha\": \"1999-10-22\",\n    \"password\": \"123RL\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/players",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"players"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login Admin Gutierrez",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"Admin_gutierrez@gmail.com\",\n    \"password\": \"123RG\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/api/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login Roberto Lopez",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"roberto_lopez@gmail.com\",\n    \"password\": \"123RL\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/api/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login Mauricio",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"mauricio@gmail.com\",\n    \"password\": \"123M\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/api/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT to player by the same player",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token-auth",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvYmVydG9fbG9wZXpAZ21haWwuY29tIiwiaWF0IjoxNjIxMTEyOTI1fQ.s2o7yWrut6v1roxZSIa5X__nRzX4Gk4knVLBxTceSbM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"anastacio\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/players/players/roberto_Lopez@gmail.coM",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"players",
+						"players",
+						"roberto_Lopez@gmail.coM"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT to player by admin",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token-auth",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluX2d1dGllcnJlekBnbWFpbC5jb20iLCJpYXQiOjE2MjExMTI5ODB9.jJU7h2ta-98BNHsAIEsaYWWiqvboxnjL_fzAAuF-LMs",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"datos\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/admins/players/roberto_Lopez@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admins",
+						"players",
+						"roberto_Lopez@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT to admin by the same admin",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token-auth",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluX2d1dGllcnJlekBnbWFpbC5jb20iLCJpYXQiOjE2MjExMTMxNzd9.EgOrexdlM5du2CPinwv3unfuoxcOKEswSHHvQkVkgnc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"El Rey\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/admins/admins/Admin_gutierrez@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admins",
+						"admins",
+						"Admin_gutierrez@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get player by the same player",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token-auth",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluX2d1dGllcnJlekBnbWFpbC5jb20iLCJpYXQiOjE2MjExMTI0NTd9.VDIBdEnX6i0vlExsmhP5V8a-wv23uaNaPBMWlKh9RCQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/players/players/roberto_Lopez@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"players",
+						"players",
+						"roberto_Lopez@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get player by admin",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token-auth",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluX2d1dGllcnJlekBnbWFpbC5jb20iLCJpYXQiOjE2MjExMTI0NTd9.VDIBdEnX6i0vlExsmhP5V8a-wv23uaNaPBMWlKh9RCQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/admins/players/roberto_Lopez@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admins",
+						"players",
+						"roberto_Lopez@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get admin by the same admin",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token-auth",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluX2d1dGllcnJlekBnbWFpbC5jb20iLCJpYXQiOjE2MjExMTI0NTd9.VDIBdEnX6i0vlExsmhP5V8a-wv23uaNaPBMWlKh9RCQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/admins/admins/Admin_gutierrez@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admins",
+						"admins",
+						"Admin_gutierrez@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get players by player",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token-auth",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluX2d1dGllcnJlekBnbWFpbC5jb20iLCJpYXQiOjE2MjExMTI0NTd9.VDIBdEnX6i0vlExsmhP5V8a-wv23uaNaPBMWlKh9RCQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/api/players/players",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"players",
+						"players"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get players by admin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token-auth",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluX2d1dGllcnJlekBnbWFpbC5jb20iLCJpYXQiOjE2MjExMTI0NTd9.VDIBdEnX6i0vlExsmhP5V8a-wv23uaNaPBMWlKh9RCQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/api/admins/players",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admins",
+						"players"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get admins by admin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token-auth",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluX2d1dGllcnJlekBnbWFpbC5jb20iLCJpYXQiOjE2MjExMTI0NTd9.VDIBdEnX6i0vlExsmhP5V8a-wv23uaNaPBMWlKh9RCQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/api/admins/admins",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admins",
+						"admins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar al usuario roberto Lopez by player",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token-auth",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluX2d1dGllcnJlekBnbWFpbC5jb20iLCJpYXQiOjE2MjExMTI0NTd9.VDIBdEnX6i0vlExsmhP5V8a-wv23uaNaPBMWlKh9RCQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/players/roberto_Lopez@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"players",
+						"roberto_Lopez@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar al player Roberto Lopez by admin",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token-auth",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluX2d1dGllcnJlekBnbWFpbC5jb20iLCJpYXQiOjE2MjExMTI0NTd9.VDIBdEnX6i0vlExsmhP5V8a-wv23uaNaPBMWlKh9RCQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/adimns/players/roberto_Lopez@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"adimns",
+						"players",
+						"roberto_Lopez@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar al usuario Admin Gutierrez",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token-auth",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluX2d1dGllcnJlekBnbWFpbC5jb20iLCJpYXQiOjE2MjExMTI0NTd9.VDIBdEnX6i0vlExsmhP5V8a-wv23uaNaPBMWlKh9RCQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/admins/Admin_gutierrez@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admins",
+						"Admin_gutierrez@gmail.com"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
